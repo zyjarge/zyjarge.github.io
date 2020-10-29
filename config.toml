@@ -16,7 +16,7 @@ summaryLength = 140
 disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
 
 [author]
-  name = "武大郎撸猫"
+  name = "zhangyong."
 
 [params]
   subtitle = "a real (co|rea)der."

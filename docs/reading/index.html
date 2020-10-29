@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>书单 | ZhangYong&#39;s Blog</title>
+    <meta property="og:title" content="书单 - ZhangYong&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2017-12-10T20:13:27&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2017-12-10T20:13:27&#43;08:00'>
+        
+    <meta name="Keywords" content="读书,感悟,养娃,用自己的方式理解感悟世界">
+    <meta name="description" content="我的书单以及年度读书进度">
+        
+    <meta name="author" content="(co|rea)der">
+    <meta property="og:url" content="http://zhangyong.me/reading/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://zhangyong.me/">
+                        ZhangYong&#39;s Blog
+                    </a>
+                
+                <p class="description">a real coder and reader.</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://zhangyong.me/">首页</a>
+                    
+                    <a class="current" href="http://zhangyong.me/reading/" title="读书">读书</a>
+                    
+                    <a  href="http://zhangyong.me/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://zhangyong.me/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#我的书单">我的书单</a>
+      <ul>
+        <li><a href="#投资理财">投资理财</a></li>
+        <li><a href="#企业文化商业案例">企业文化、商业案例</a></li>
+        <li><a href="#人物传记">人物传记</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">书单</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2017年12月10日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <h2 id="我的书单">我的书单</h2>
+<h3 id="投资理财">投资理财</h3>
+<table>
+<thead>
+<tr>
+<th align="center">书名</th>
+<th align="center">一句话简介</th>
+<th align="center">笔记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://book.douban.com/subject/34836784/">《定投十年，财务自由》</a></td>
+<td align="center">基金定投是一种适用于普通人的简单易学、门槛低，安全性高的投资方法，收益还能跑赢通货膨胀。</td>
+<td align="center">★★★☆☆</td>
+</tr>
+<tr>
+<td align="center"><a href="https://book.douban.com/subject/26831789/">《穷查理宝典：查理芒格智慧箴言录》</a></td>
+<td align="center">《穷查理宝典》收录了查理过去20年来主要的公开演讲。</td>
+<td align="center">★★★★★</td>
+</tr>
+<tr>
+<td align="center"><a href="https://book.douban.com/subject/30115728/">《小白投资美股指南》</a></td>
+<td align="center">投资美股之前扫盲用的，简单介绍了美股的基础知识。</td>
+<td align="center">★★★☆☆</td>
+</tr>
+<tr>
+<td align="center"><a href="https://book.douban.com/subject/1095634/">《小狗钱钱》</a></td>
+<td align="center">以童话的形式介绍了理财的知识，比较适合没有任何理财基础，初次接触理财的新手。</td>
+<td align="center">★★★★★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="企业文化商业案例">企业文化、商业案例</h3>
+<table>
+<thead>
+<tr>
+<th align="center">书名</th>
+<th align="center">一句话简介</th>
+<th align="center">笔记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="1">《创新公司：皮克斯的启示》</a></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><a href="1">《腾讯传》</a></td>
+<td align="center"></td>
+<td align="center">★★★★★</td>
+</tr>
+<tr>
+<td align="center"><a href="1">《蚂蚁金服》</a></td>
+<td align="center"></td>
+<td align="center">★★★★☆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="人物传记">人物传记</h3>
+<table>
+<thead>
+<tr>
+<th align="center">书名</th>
+<th align="center">一句话简介</th>
+<th align="center">笔记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">《邓小平时代》</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">《毛泽东传：名著珍藏本》</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">《滚雪球：巴菲特和他的财富人生》</td>
+<td align="center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/about/">关于我</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="http://zhangyong.me/">ZhangYong&#39;s Blog By (co|rea)der</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='http://zhangyong.me/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://zhangyong.me/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://zhangyong.me/post/wheniamrunging/" title="【读书笔记】当我谈跑步时，我谈些什么">【读书笔记】当我谈跑步时，我谈些什么</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/silliconvally/" title="【读书笔记】硅谷之谜">【读书笔记】硅谷之谜</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://zhangyong.me/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://zhangyong.me/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

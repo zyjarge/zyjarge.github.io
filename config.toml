@@ -1,0 +1,82 @@
+baseURL = "http://zhangyong.me/"
+languageCode = "zh-CN"
+title = "ZhangYong's Blog"
+theme = "maupassant"
+googleAnalytics = ""  # UA-XXXXXXXX-X
+publishDir = "docs"
+
+## 保持分类的原始名字（false会做转小写处理）
+preserveTaxonomyNames = true
+## 是否禁止URL Path转小写
+disablePathToLower = true
+
+hasCJKLanguage = true
+summaryLength = 140
+
+disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
+
+[author]
+  name = "武大郎撸猫"
+
+[params]
+  subtitle = "a real (co|rea)der."
+  keywords = "工作、读书、养娃,用自己的方式理解感悟世界"
+  description = ""
+  busuanzi = false #启用不算子网页统计
+  googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
+  localSearch = true # 启用本地搜索
+  
+  # 这里我存放在了主题的static文件夹里，根目录的似乎也可以
+  customCSS = ['douban.css', 'other.css']
+  # if ['custom.css'], load '/static/css/custom.css' file
+  customJS = ['douban.js']
+  # if ['custom.js'], load '/static/js/custom.js' file
+
+  # 全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能
+  toc = true  # 是否开启目录
+
+
+## 配置 utteranc评论,教程参考 https://utteranc.es/
+[params.utteranc]
+  enable = true
+  repo = "your github repo" ##换成自己得
+  issueTerm = "pathname"
+  theme = "github-light"
+
+## 开启版权声明，协议名字和链接都可以换
+[params.cc]
+    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
+    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+
+## 配置代码高亮
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "github"
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  category = "categories"
+
+## 配置网站菜单
+
+[menu]
+
+  [[menu.main]]
+    identifier = "reading" #存放书单以及年度读书计划
+    name = "读书"
+    url = "/reading/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 4

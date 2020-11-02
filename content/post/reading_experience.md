@@ -1,6 +1,7 @@
 ---
 title: "【读书笔记】《见识》"
 date: 2020-04-19T18:13:09+08:00
+categories: ['读书笔记']
 draft: false
 ---
 

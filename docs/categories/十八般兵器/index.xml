@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>十八般兵器 on ZhangYong&#39;s Blog</title>
+    <link>http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8/</link>
+    <description>Recent content in 十八般兵器 on ZhangYong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 19 Feb 2020 16:15:20 +0800</lastBuildDate>
+    
+	<atom:link href="http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【十八般兵器】Typora</title>
+      <link>http://zhangyong.me/post/2020/intro_typora/</link>
+      <pubDate>Wed, 19 Feb 2020 16:15:20 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/intro_typora/</guid>
+      <description>Typora使用介绍 简介 ​ 你是否也有过类似的经历，在使用某款软件编写md文档时，为了马上看到经过渲染过的md文档，同时开启编辑和预览两个窗口，不停的在两个窗口中进行切换，写作思路经常被打断，因此大大降低了编辑效率。某次在观看一个大佬的桌面时，发现其使用一款叫typora的工具作为</description>
+    </item>
+    
+  </channel>
+</rss>

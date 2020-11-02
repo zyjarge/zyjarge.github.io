@@ -6,21 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Posts | ZhangYong&#39;s Blog</title>
-    <meta property="og:title" content="Posts - ZhangYong&#39;s Blog">
+    <title> | ZhangYong&#39;s Blog</title>
+    <meta property="og:title" content=" - ZhangYong&#39;s Blog">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="工作、读书、养娃,用自己的方式理解感悟世界">
-    <meta name="description" content="Posts">
+    <meta name="description" content="">
         
     <meta name="author" content="zhangyong.">
-    <meta property="og:url" content="http://zhangyong.me/post/">
+    <meta property="og:url" content="http://zhangyong.me/file/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="http://zhangyong.me/post/index.xml" title="ZhangYong's Blog" />
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -48,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="http://zhangyong.me/">首页</a>
+                    <a class="" href="http://zhangyong.me/">首页</a>
                     
                     <a  href="http://zhangyong.me/reading/" title="读书">读书</a>
                     
@@ -69,113 +68,183 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
-    
-    
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rrr">RRR</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
     <article class="post">
         <header>
-            <h1 class="post-title">
-                <a href="http://zhangyong.me/post/reading_experience/" title="【读书笔记】《见识》">【读书笔记】《见识》</a>
-            </h1>
+            <h1 class="post-title"></h1>
         </header>
         <date class="post-meta meta-date">
-            2020年4月19日
+            1年1月1日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0'>读书笔记</a></span>
-            
-        </div>
+        
         
         <div class="post-content">
-            见识-你能走多远，取决与你的见识 简介 ​ 这本书是吴军老师人生进阶三部曲中的第一本书,（剩下两本是《格局》《态度》），看完这本书之后的感觉有点像鸡汤类书籍，因为书中大多讲的人生成功的经验。尽管没有像之前读吴军老师的“之”（浪潮之巅、硅谷之谜、文明之光）系列那种科技类文章大呼过瘾的感觉……
+            <h2 id="rrr">RRR</h2>
+<p>ttt</p>
+
         </div>
-        <p class="readmore"><a href="http://zhangyong.me/post/reading_experience/">阅读全文</a></p>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/reading_experience/">【读书笔记】《见识》</a></li>
+        
+        <li><a href="/post/2020/intro_typora/">【十八般兵器】Typora</a></li>
+        
+        <li><a href="/post/wheniamrunging/">【读书笔记】当我谈跑步时，我谈些什么</a></li>
+        
+        <li><a href="/post/2018/silliconvally/">【读书笔记】硅谷之谜</a></li>
+        
+        <li><a href="/reading/">书单</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
     </article>
     
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://zhangyong.me/post/2020/intro_typora/" title="【十八般兵器】Typora">【十八般兵器】Typora</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年2月19日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8'>十八般兵器</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Typora使用介绍 简介 ​ 你是否也有过类似的经历，在使用某款软件编写md文档时，为了马上看到经过渲染过的md文档，同时开启编辑和预览两个窗口，不停的在两个窗口中进行切换，写作思路经常被打断，因此大大降低了编辑效率。某次在观看一个大佬的桌面时，发现其使用一款叫typora的工具作为……
-        </div>
-        <p class="readmore"><a href="http://zhangyong.me/post/2020/intro_typora/">阅读全文</a></p>
-    </article>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://zhangyong.me/post/wheniamrunging/" title="【读书笔记】当我谈跑步时，我谈些什么">【读书笔记】当我谈跑步时，我谈些什么</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年7月28日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0'>读书笔记</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            最初为什么想选这本书？ 其实原因很简单，众所周知村上春树是一名优秀的作家，也是一名优秀的长跑爱好者，恰巧我自己也是跑步爱好者，所以就想了解村上是如何看待跑步这件事的。 在这本书中，作者讲到自己从30岁了（1978年）开始写作，从34岁（1982年）开始跑步，而这两样东西，一直作为村上……
-        </div>
-        <p class="readmore"><a href="http://zhangyong.me/post/wheniamrunging/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://zhangyong.me/post/2018/silliconvally/" title="【读书笔记】硅谷之谜">【读书笔记】硅谷之谜</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2018年3月22日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0'>读书笔记</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            【读书笔记】硅谷之谜 硅谷历史 硅谷起源 硅谷成功奥秘 吴军简介 硅谷历史 首先声明一下，我作为一个十足的土鳖并没有去过硅谷，对硅谷的所有了解都来自这本书以及网上的资料，再加上这本书出版于2015年，因此我所分享的内容很可能与现在的实际情况有所出入，欢迎大家拍砖指正。 提到硅谷，大家一定不会陌……
-        </div>
-        <p class="readmore"><a href="http://zhangyong.me/post/2018/silliconvally/">阅读全文</a></p>
-    </article>
-    
-    
-    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-
-
-
-
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
 </div>
 
                     <footer id="footer">
@@ -198,6 +267,17 @@
     
     </footer>
 
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 <a id="rocket" href="#top"></a>

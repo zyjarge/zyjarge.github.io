@@ -7,7 +7,7 @@ draft: false
 
 ---
 
-
+![](/img/typora.png)
 
 # Typora使用介绍
 
@@ -65,3 +65,5 @@ draft: false
 - 如果想查看源码的话，可以使用快捷键【⌘+/】切换。
 - 在输入代码块的时候，在右下角可以选择不同语言的语法高亮
 - 使用⌘+1、2、3 可以切换不同功能的侧边栏，具体根据自己的实际需求调整。
+
+![image-20201102170054010](/Users/zhangyong/Library/Application Support/typora-user-images/image-20201102170054010.png)

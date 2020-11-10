@@ -2,7 +2,7 @@ baseURL = "http://zhangyong.me/"
 languageCode = "zh-CN"
 title = "ZhangYong's Blog"
 theme = "maupassant"
-googleAnalytics = ""  # UA-XXXXXXXX-X
+googleAnalytics = "G-24VFZP809X"  # UA-XXXXXXXX-X
 publishDir = "docs"
 
 ## 保持分类的原始名字（false会做转小写处理）
@@ -22,7 +22,7 @@ disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要�
   subtitle = "a real (co|rea)der."
   keywords = "工作、读书、养娃,用自己的方式理解感悟世界"
   description = ""
-  busuanzi = false #启用不算子网页统计
+  busuanzi = true #启用不算子网页统计
   googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
   localSearch = true # 启用本地搜索
   

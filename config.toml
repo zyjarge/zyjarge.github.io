@@ -2,7 +2,7 @@ baseURL = "http://zhangyong.me/"
 languageCode = "zh-CN"
 title = "ZhangYong's Blog"
 theme = "maupassant"
-googleAnalytics = "G-24VFZP809X"  # UA-XXXXXXXX-X
+googleAnalytics = "G-3F51XDLDYN"  # UA-XXXXXXXX-X
 publishDir = "docs"
 
 ## 保持分类的原始名字（false会做转小写处理）
@@ -13,7 +13,7 @@ disablePathToLower = true
 hasCJKLanguage = true
 summaryLength = 140
 
-disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
+# disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
 
 [author]
   name = "zhangyong."
@@ -43,7 +43,6 @@ disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要�
   issueTerm = "pathname"
   theme = "github-light"
 
-## 开启版权声明，协议名字和链接都可以换
 [params.cc]
     name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
     link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"

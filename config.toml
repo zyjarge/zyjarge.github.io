@@ -2,7 +2,7 @@ baseURL = "http://zhangyong.me/"
 languageCode = "zh-CN"
 title = "ZhangYong's Blog"
 theme = "maupassant"
-googleAnalytics = "G-24VFZP809X"  # UA-XXXXXXXX-X
+# googleAnalytics = "G-24VFZP809X"  # UA-XXXXXXXX-X
 publishDir = "docs"
 
 ## 保持分类的原始名字（false会做转小写处理）

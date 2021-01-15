@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>【十八般兵器】Typora进阶使用-画图篇（1）</title>
+      <link>http://zhangyong.me/post/2020/intro_typora_2/</link>
+      <pubDate>Thu, 15 Oct 2020 17:03:23 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/intro_typora_2/</guid>
+      <description>Typora除了能应用在日常的写作中以外，还有一项强大的功能，就是在文章中插入各种炫酷的图形。这里说明一下，Typora的画图功能，其实是基于markdown语法的mermaid的功能，具体相关信息可以参考官网。 1. 什么是Mermaid？ ​ 简单来说，mermaid就是一种用文本形式</description>
+    </item>
+    
+    <item>
       <title>【读书笔记】《见识》</title>
       <link>http://zhangyong.me/post/2020/reading_experience/</link>
       <pubDate>Sun, 19 Apr 2020 18:13:09 +0800</pubDate>

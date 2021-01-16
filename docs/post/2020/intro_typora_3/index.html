@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>【十八般兵器】Typora进阶使用-画图篇（2） | ZhangYong&#39;s Blog</title>
+    <meta property="og:title" content="【十八般兵器】Typora进阶使用-画图篇（2） - ZhangYong&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-10-22T19:03:23&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-10-22T19:03:23&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="【十八般兵器】Typora进阶使用-画图篇（2）">
+        
+    <meta name="author" content="zhangyong.">
+    <meta property="og:url" content="http://zhangyong.me/post/2020/intro_typora_3/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-24VFZP809X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-24VFZP809X');
+    </script>
+
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://zhangyong.me/">
+                        ZhangYong&#39;s Blog
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="http://zhangyong.me/">首页</a>
+                    
+                    <a  href="http://zhangyong.me/reading/" title="读书">读书</a>
+                    
+                    <a  href="http://zhangyong.me/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://zhangyong.me/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">【十八般兵器】Typora进阶使用-画图篇（2）</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年10月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8'>十八般兵器</a></span>
+            
+        </div>
+        
+        
+        
+        <div class="post-content">
+            <p>本文继续介绍如何在typora中使用基于Mermaid的语法进行画图，本次介绍的画图类型为甘特图和实体关系图。</p>
+<h1 id="1-使用typora绘制甘特图">1. 使用typora绘制甘特图</h1>
+<blockquote>
+<p>甘特图（Gantt chart）又称为横道图、条状图(Bar chart)。 其通过条状图来显示项目、进度和其他时间相关的系统进展的内在关系随着时间进展的情况。 以提出者亨利·劳伦斯·甘特（Henry Laurence Gantt）先生的名字命名。</p>
+</blockquote>
+<p>​		一般在项目管理中经常会用到甘特图，用于管理项目进度，以及对子任务之间的依赖关系的管理。甘特图会将每个计划的任务记录为从左到右延伸的连续条形图。 x轴代表时间，y轴记录不同的任务以及完成任务的顺序。</p>
+<h2 id="11-甘特图语法">1.1 甘特图语法</h2>
+<pre><code class="language-yacas" data-lang="yacas">gantt
+
+title 软件开发迭代周期示意图 
+%% dateFormat 用于定义输入代码中的日期格式，注意这里并不是定义所显示图中的格式
+dateFormat YYYY-MM-DD  
+%% axisFormat这个参数是用于定义在x轴上显示的日期格式
+axisFormat  %Y/%m/%d   
+
+%% section 可以将一个任务划分为多个区间，可以定义为一个项目中的多个角色等。
+section 产品经理      
+
+%% 定义子任务的格式： [任务状态(active,done)],[重要任务(crit)],[任务id],[after 前置任务id], [持续时间]
+  需求分析                      :done, po-task1, 2020-01-06,1d
+  绘制原型                      :done,po-task2, after po-task1, 1d
+  沟通需求                      :active,po-task3, after po-task2,1d
+section 开发
+  理解需求                      :active,dev-task1, after po-task2, 1d
+  架构设计                      :dev-task2, after dev-task1, 2d
+  编码开发                      :crit, dev-task3, after dev-task2, 3d
+  修复bug                      :dev-task4, after dev-task3, 3d
+section 测试
+  理解需求                      :active, qa-task1, after po-task2, 1d
+  编写测试用例                   :qa-task2, after qa-task1 , 2d
+  测试                         :crit,qa-task3, after dev-task2 , 4d
+section 运维
+%% 如果一个子任务依赖多个前置任务的话，可以在after后使用空格分隔标识。
+  部署上线                      :crit,ops-task1, after dev-task4 qa-task3, 1d
+  
+
+</code></pre><p><img src="/img/2020/intro_typora_3/image-20210117003603261.png" alt="image-20210117003603261"></p>
+<h2 id="12-甘特图输入日期支持的格式">1.2 甘特图输入日期支持的格式</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Input       Example             Description<span style="color:#000;font-weight:bold">:</span>
+YYYY        <span style="color:#099">2014</span>                <span style="color:#099">4</span> digit year
+YY          <span style="color:#099">14</span>                  <span style="color:#099">2</span> digit year
+Q           <span style="color:#099">1..4</span>                Quarter <span style="color:#000;font-weight:bold">of</span> year. Sets month to first month <span style="color:#000;font-weight:bold">in</span> quarter.
+M MM        <span style="color:#099">1..12</span>               Month number
+MMM MMMM    January..Dec        Month name <span style="color:#000;font-weight:bold">in</span> locale set by moment.locale()
+D DD        <span style="color:#099">1..31</span>               Day <span style="color:#000;font-weight:bold">of</span> month
+Do          <span style="color:#099">1</span>st.<span style="color:#099">.31</span>st           Day <span style="color:#000;font-weight:bold">of</span> month <span style="color:#000;font-weight:bold">with</span> ordinal
+DDD DDDD    <span style="color:#099">1..365</span>              Day <span style="color:#000;font-weight:bold">of</span> year
+X           <span style="color:#099">1410715640.579</span>      Unix timestamp
+x           <span style="color:#099">1410715640579</span>       Unix ms timestamp
+H HH        <span style="color:#099">0..23</span>               <span style="color:#099">24</span> hour time
+h hh        <span style="color:#099">1..12</span>               <span style="color:#099">12</span> hour time used <span style="color:#000;font-weight:bold">with</span> a A.
+a A         am pm               Post or ante meridiem
+m mm        <span style="color:#099">0..59</span>               Minutes
+s ss        <span style="color:#099">0..59</span>               Seconds
+S           <span style="color:#099">0..9</span>                Tenths <span style="color:#000;font-weight:bold">of</span> a second
+SS          <span style="color:#099">0..99</span>               Hundreds <span style="color:#000;font-weight:bold">of</span> a second
+SSS         <span style="color:#099">0..999</span>              Thousandths <span style="color:#000;font-weight:bold">of</span> a second
+Z ZZ        <span style="color:#000;font-weight:bold">+</span><span style="color:#099">12</span><span style="color:#000;font-weight:bold">:</span><span style="color:#099">00</span>              Offset from UTC as <span style="color:#000;font-weight:bold">+-</span>HH<span style="color:#000;font-weight:bold">:</span>mm, <span style="color:#000;font-weight:bold">+-</span>HHmm, or Z
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="13-甘特图坐标轴显示日期格式">1.3 甘特图坐标轴显示日期格式</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">%</span>a <span style="color:#000;font-weight:bold">-</span> abbreviated weekday name.
+<span style="color:#000;font-weight:bold">%</span>A <span style="color:#000;font-weight:bold">-</span> full weekday name.
+<span style="color:#000;font-weight:bold">%</span>b <span style="color:#000;font-weight:bold">-</span> abbreviated month name.
+<span style="color:#000;font-weight:bold">%</span>B <span style="color:#000;font-weight:bold">-</span> full month name.
+<span style="color:#000;font-weight:bold">%</span>c <span style="color:#000;font-weight:bold">-</span> date and time, as <span style="color:#d14">&#34;%a %b %e %H:%M:%S %Y&#34;</span>.
+<span style="color:#000;font-weight:bold">%</span>d <span style="color:#000;font-weight:bold">-</span> zero<span style="color:#000;font-weight:bold">-</span>padded day <span style="color:#000;font-weight:bold">of</span> the month as a decimal number [<span style="color:#099">01</span>,<span style="color:#099">31</span>].
+<span style="color:#000;font-weight:bold">%</span>e <span style="color:#000;font-weight:bold">-</span> space<span style="color:#000;font-weight:bold">-</span>padded day <span style="color:#000;font-weight:bold">of</span> the month as a decimal number [ <span style="color:#099">1</span>,<span style="color:#099">31</span>]; equivalent to <span style="color:#000;font-weight:bold">%</span>_d.
+<span style="color:#000;font-weight:bold">%</span>H <span style="color:#000;font-weight:bold">-</span> hour (<span style="color:#099">24</span><span style="color:#000;font-weight:bold">-</span>hour clock) as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">23</span>].
+<span style="color:#000;font-weight:bold">%</span>I <span style="color:#000;font-weight:bold">-</span> hour (<span style="color:#099">12</span><span style="color:#000;font-weight:bold">-</span>hour clock) as a decimal number [<span style="color:#099">01</span>,<span style="color:#099">12</span>].
+<span style="color:#000;font-weight:bold">%</span>j <span style="color:#000;font-weight:bold">-</span> day <span style="color:#000;font-weight:bold">of</span> the year as a decimal number [<span style="color:#099">001</span>,<span style="color:#099">366</span>].
+<span style="color:#000;font-weight:bold">%</span>m <span style="color:#000;font-weight:bold">-</span> month as a decimal number [<span style="color:#099">01</span>,<span style="color:#099">12</span>].
+<span style="color:#000;font-weight:bold">%</span>M <span style="color:#000;font-weight:bold">-</span> minute as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">59</span>].
+<span style="color:#000;font-weight:bold">%</span>L <span style="color:#000;font-weight:bold">-</span> milliseconds as a decimal number [<span style="color:#099">000</span>, <span style="color:#099">999</span>].
+<span style="color:#000;font-weight:bold">%</span>p <span style="color:#000;font-weight:bold">-</span> either AM or PM.
+<span style="color:#000;font-weight:bold">%</span>S <span style="color:#000;font-weight:bold">-</span> second as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">61</span>].
+<span style="color:#000;font-weight:bold">%</span>U <span style="color:#000;font-weight:bold">-</span> week number <span style="color:#000;font-weight:bold">of</span> the year (Sunday as the first day <span style="color:#000;font-weight:bold">of</span> the week) as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">53</span>].
+<span style="color:#000;font-weight:bold">%</span>w <span style="color:#000;font-weight:bold">-</span> weekday as a decimal number [<span style="color:#099">0</span>(Sunday),<span style="color:#099">6</span>].
+<span style="color:#000;font-weight:bold">%</span>W <span style="color:#000;font-weight:bold">-</span> week number <span style="color:#000;font-weight:bold">of</span> the year (Monday as the first day <span style="color:#000;font-weight:bold">of</span> the week) as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">53</span>].
+<span style="color:#000;font-weight:bold">%</span>x <span style="color:#000;font-weight:bold">-</span> date, as <span style="color:#d14">&#34;%m/%d/%Y&#34;</span>.
+<span style="color:#000;font-weight:bold">%</span>X <span style="color:#000;font-weight:bold">-</span> time, as <span style="color:#d14">&#34;%H:%M:%S&#34;</span>.
+<span style="color:#000;font-weight:bold">%</span>y <span style="color:#000;font-weight:bold">-</span> year without century as a decimal number [<span style="color:#099">00</span>,<span style="color:#099">99</span>].
+<span style="color:#000;font-weight:bold">%</span>Y <span style="color:#000;font-weight:bold">-</span> year <span style="color:#000;font-weight:bold">with</span> century as a decimal number.
+<span style="color:#000;font-weight:bold">%</span>Z <span style="color:#000;font-weight:bold">-</span> time zone offset, such as <span style="color:#d14">&#34;-0700&#34;</span>.
+<span style="color:#000;font-weight:bold">%%</span> <span style="color:#000;font-weight:bold">-</span> a literal <span style="color:#d14">&#34;%&#34;</span> character.
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="2使用typora绘制实体关系图">2.使用typora绘制实体关系图</h1>
+<blockquote>
+<p>E-R图也称实体-联系图(Entity Relationship Diagram)，提供了表示实体类型、属性和联系的方法，用来描述<a href="https://baike.baidu.com/item/%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C/688877">现实世界</a>的<a href="https://baike.baidu.com/item/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B/3187025">概念模型</a>。</p>
+</blockquote>
+<p>​		实体图在日常的数据库建模设计中经常用到的一种图形，我们也可以借助typora基于Mermaid语法来轻松画出实体关系图。Mermaid所使用ER图的语法是与plantUML兼容的语法，并且可以通过标记实体之间的关系，语法可以抽象为如下结构：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"> &lt;first-entity&gt; [&lt;relationship&gt; &lt;second-entity&gt; : &lt;relationship-label&gt;]
+</code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li>
+<p>First-entity:  实体的名称，名称必须以字母字符开头，并且还可以包含数字，连字符和下划线。</p>
+</li>
+<li>
+<p>relationship：实体间的关系，例如：</p>
+<table>
+<thead>
+<tr>
+<th align="center">左边</th>
+<th align="center">右边</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">|o</td>
+<td align="center">o|</td>
+<td align="center">零个或一个，即至多一个</td>
+</tr>
+<tr>
+<td align="center">||</td>
+<td align="center">||</td>
+<td align="center">有且只有一个</td>
+</tr>
+<tr>
+<td align="center">}o</td>
+<td align="center">o{</td>
+<td align="center">零个或多个</td>
+</tr>
+<tr>
+<td align="center">}|</td>
+<td align="center">|{</td>
+<td align="center">一个或多个，即至少1个</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>second-entity：所关联实体的名称</p>
+</li>
+<li>
+<p>relationship-label：从第一个实体的角度描述了这种关系。</p>
+</li>
+</ul>
+<h2 id="21-一对一关系">2.1 一对一关系</h2>
+<pre><code class="language-mermaid" data-lang="mermaid">erDiagram
+	 EntityA ||--o| EntityB :&quot;1:1&quot;
+</code></pre><p><img src="/img/2020/intro_typora_3/image-20210117013441443.png" alt="image-20210117013441443"></p>
+<h2 id="22-一对多关系">2.2 一对多关系</h2>
+<pre><code class="language-mermaid" data-lang="mermaid">erDiagram
+EntityA o|--|{ EntityB :&quot;1:n&quot;
+</code></pre><p><img src="/img/2020/intro_typora_3/image-20210117013530621.png" alt="image-20210117013530621"></p>
+<h2 id="23-多对多关系">2.3 多对多关系</h2>
+<p>A、B两个实体通过一对多的关联表C实现多对多的关系</p>
+<pre><code class="language-mermaid" data-lang="mermaid">erDiagram
+EntityA o|--|{ EntityC :&quot;1:n&quot;
+EntityB o|--|{ EntityC :&quot;1:n&quot;
+</code></pre><p><img src="/img/2020/intro_typora_3/image-20210117013554403.png" alt="image-20210117013554403"></p>
+<h1 id="3-结语">3. 结语</h1>
+<p>​		使用typora这款写作软件已经有段时间了，已经逐渐习惯了使用这种简洁所见即所得的工具来记录平时工作生活中的点滴思维，已经成为写blog、记录读书笔记的主力工具，结合网盘一起实用，基本上可以成为印象笔记的替代品。其实typora还有很多更实用的高阶功能，后面看看有时间再深入总结一下。</p>
+
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'c5f1d2fea2b9b4f626ae',
+    clientSecret: '2d6cb7c477c34f3ec17d872971e70bc48f9a4959',
+    repo: 'zyjarge.github.io',
+    owner: 'zyjarge',
+    admin: ['zyjarge'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="http://zhangyong.me/">ZhangYong&#39;s Blog By zhangyong.</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+    
+    </footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://zhangyong.me/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_3/" title="【十八般兵器】Typora进阶使用-画图篇（2）">【十八般兵器】Typora进阶使用-画图篇（2）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_2/" title="【十八般兵器】Typora进阶使用-画图篇（1）">【十八般兵器】Typora进阶使用-画图篇（1）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/reading_experience/" title="【读书笔记】《见识》">【读书笔记】《见识》</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora/" title="【十八般兵器】Typora">【十八般兵器】Typora</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/wheniamrunging/" title="【读书笔记】当我谈跑步时，我谈些什么">【读书笔记】当我谈跑步时，我谈些什么</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/effective_learning/" title="【读书笔记】如何高效学习">【读书笔记】如何高效学习</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/think_in_data_engine_2/" title="【三省吾身】互联网企业数据工程中的那些坑（二）">【三省吾身】互联网企业数据工程中的那些坑（二）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/think_in_data_engine_1/" title="【三省吾身】互联网企业数据工程中的那些坑（一）">【三省吾身】互联网企业数据工程中的那些坑（一）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/silliconvally/" title="【读书笔记】硅谷之谜">【读书笔记】硅谷之谜</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2017/KMS/" title="【管理】知识管理的团队内部实践">【管理】知识管理的团队内部实践</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="http://zhangyong.me/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/">三省吾身 (2)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8/">十八般兵器 (3)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E7%AE%A1%E7%90%86/">管理 (1)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记 (4)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://zhangyong.me/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://zhangyong.me/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

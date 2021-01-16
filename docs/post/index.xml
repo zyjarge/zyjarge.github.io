@@ -6,10 +6,19 @@
     <description>Recent content in Posts on ZhangYong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Oct 2020 17:03:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2020 19:03:23 +0800</lastBuildDate>
     
 	<atom:link href="http://zhangyong.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【十八般兵器】Typora进阶使用-画图篇（2）</title>
+      <link>http://zhangyong.me/post/2020/intro_typora_3/</link>
+      <pubDate>Thu, 22 Oct 2020 19:03:23 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/intro_typora_3/</guid>
+      <description>本文继续介绍如何在typora中使用基于Mermaid的语法进行画图，本次介绍的画图类型为甘特图和实体关系图。 1. 使用typora绘制甘特图 甘特图（Gantt chart）又称为横道图、条状图(Bar chart)。 其通过条状图来显示项目、进度和其他时间相关的系统进展的内在关系随着时间</description>
+    </item>
     
     <item>
       <title>【十八般兵器】Typora进阶使用-画图篇（1）</title>

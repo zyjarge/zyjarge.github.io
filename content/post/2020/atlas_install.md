@@ -1,6 +1,6 @@
 ---
 title: "【大数据】元数据管理工具 Apache Atlas 安装"
-date: 2020-10-25T11:19:59+08:00
+date: 2020-01-15T11:19:59+08:00
 draft: false
 categories: ['大数据','数据治理']
 ---
@@ -11,7 +11,7 @@ categories: ['大数据','数据治理']
 
 ## 1. atlas安装主要信息如下：
 
-- 版本：atlas-2.1.0 ： https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz
+- 版本：atlas-2.0.0 ： https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz
 - 模式：采用atlas自带的habse和solr作为存储和搜索引擎
 - 其他依赖： jdk 1.8+kafka
 
@@ -20,8 +20,8 @@ categories: ['大数据','数据治理']
 ### 2.1 下载安装包、解压、设置PATH：
 
 ```bash
-wget https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz
-tar xvf apache-atlas-2.1.0-sources.tar.gz -C /usr/lib/
+wget https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz
+tar xvf apache-atlas-2.0.0-sources.tar.gz -C /usr/lib/
 vim /etc/profile
 # 添加atlas的路径到PATH
 PATH=$ATLAS_HOME/bin:$PATH
@@ -38,8 +38,8 @@ mvn clean -DskipTests package -Pdist,embedded-hbase-solr
 由于在构建过程中需要下载hbase和solr两个大家伙，使用命令行下载比较慢，这里有个小技巧，可以提前使用下载工具下载好，放入如下目录，然后再进行构建的时候，会判断安装包已经存在跳过下载直接解压安装。
 
 ```bash
-hbase-2.0.2.tar.gz：放入 apache-atlas-sources-2.1.0/distro/hbase/
-solr-7.5.0.tgz: 放入 apache-atlas-sources-2.1.0/distro/solr/
+hbase-2.0.2.tar.gz：放入 apache-atlas-sources-2.0.0/distro/hbase/
+solr-7.5.0.tgz: 放入 apache-atlas-sources-2.0.0/distro/solr/
 ```
 
 在构建成功之后，会在distro目录下产生如下格式的安装包：
@@ -59,8 +59,8 @@ distro/target/apache-atlas-{project.version}-storm-hook.tar.gz
 将`distro/target/apache-atlas-{project.version}-bin.tar.gz`解压到部署路径并建立简写的软连接，这里以/opt/atlas为例，即：
 
 ```bash
-tar xvf `distro/target/apache-atlas-2.1.0-bin.tar.gz`-C /opt
-ln -s apache-atlas-2.1.0-bin atlas
+tar xvf `distro/target/apache-atlas-2.0.0-bin.tar.gz`-C /opt
+ln -s apache-atlas-2.0.0-bin atlas
 ```
 
 修改conf/atlas-application.properties中的部分参数：
@@ -114,7 +114,7 @@ bin/atlas_start.py
 4. 从debug的日志中，我们可以找到启动solr的具体命令，将下面的命令行直接粘贴在shell中执行，会出现如下提示：
 
    ```bash
-   /opt/apache-atlas-2.1.0/solr/bin/solr start -z localhost:2181 -p 9838
+   /opt/apache-atlas-2.0.0/solr/bin/solr start -z localhost:2181 -p 9838
    ```
 
    > WARNING: Starting Solr as the root user is a security risk and not considered best practice. Exiting.

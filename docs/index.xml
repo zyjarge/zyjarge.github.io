@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>【大数据】元数据管理工具 Apache Atlas 安装</title>
-      <link>http://zhangyong.me/post/2020/atlas_install/</link>
-      <pubDate>Sun, 25 Oct 2020 11:19:59 +0800</pubDate>
-      
-      <guid>http://zhangyong.me/post/2020/atlas_install/</guid>
-      <description>Atlas 安装： 1. atlas安装主要信息如下： 版本：atlas-2.1.0 ： https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz 模式：采用atlas自带的habse和solr作为存储和搜索引擎 其他依赖： jdk 1.8+kafka 2. 安装步骤 2.1 下载安装包、解压、设置PATH： 1 2 3 4 5 wget https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz tar xvf apache-atlas-2.1.0-sources.tar.gz -C /usr/lib/ vim /etc/profile # 添加atlas的路径到PATH PATH=$ATLAS_HOME/bin:$PATH 2.2 构建打包： 由于采用了内置</description>
-    </item>
-    
-    <item>
       <title>【十八般兵器】Typora进阶使用-画图篇（2）</title>
       <link>http://zhangyong.me/post/2020/intro_typora_3/</link>
       <pubDate>Thu, 22 Oct 2020 19:03:23 +0800</pubDate>
@@ -54,6 +45,15 @@
       
       <guid>http://zhangyong.me/post/2020/intro_typora/</guid>
       <description>Typora使用介绍 简介 ​ 你是否也有过类似的经历，在使用某款软件编写md文档时，为了马上看到经过渲染过的md文档，同时开启编辑和预览两个窗口，不停的在两个窗口中进行切换，写作思路经常被打断，因此大大降低了编辑效率。某次在观看一个大佬的桌面时，发现其使用一款叫typora的工具作为</description>
+    </item>
+    
+    <item>
+      <title>【大数据】元数据管理工具 Apache Atlas 安装</title>
+      <link>http://zhangyong.me/post/2020/atlas_install/</link>
+      <pubDate>Wed, 15 Jan 2020 11:19:59 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/atlas_install/</guid>
+      <description>Atlas 安装： 1. atlas安装主要信息如下： 版本：atlas-2.0.0 ： https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz 模式：采用atlas自带的habse和solr作为存储和搜索引擎 其他依赖： jdk 1.8+kafka 2. 安装步骤 2.1 下载安装包、解压、设置PATH： 1 2 3 4 5 wget https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz tar xvf apache-atlas-2.0.0-sources.tar.gz -C /usr/lib/ vim /etc/profile # 添加atlas的路径到PATH PATH=$ATLAS_HOME/bin:$PATH 2.2 构建打包： 由于采用了内置</description>
     </item>
     
     <item>

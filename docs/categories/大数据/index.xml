@@ -6,7 +6,7 @@
     <description>Recent content in 大数据 on ZhangYong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Oct 2020 11:19:59 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2020 11:19:59 +0800</lastBuildDate>
     
 	<atom:link href="http://zhangyong.me/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,10 @@
     <item>
       <title>【大数据】元数据管理工具 Apache Atlas 安装</title>
       <link>http://zhangyong.me/post/2020/atlas_install/</link>
-      <pubDate>Sun, 25 Oct 2020 11:19:59 +0800</pubDate>
+      <pubDate>Wed, 15 Jan 2020 11:19:59 +0800</pubDate>
       
       <guid>http://zhangyong.me/post/2020/atlas_install/</guid>
-      <description>Atlas 安装： 1. atlas安装主要信息如下： 版本：atlas-2.1.0 ： https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz 模式：采用atlas自带的habse和solr作为存储和搜索引擎 其他依赖： jdk 1.8+kafka 2. 安装步骤 2.1 下载安装包、解压、设置PATH： 1 2 3 4 5 wget https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz tar xvf apache-atlas-2.1.0-sources.tar.gz -C /usr/lib/ vim /etc/profile # 添加atlas的路径到PATH PATH=$ATLAS_HOME/bin:$PATH 2.2 构建打包： 由于采用了内置</description>
+      <description>Atlas 安装： 1. atlas安装主要信息如下： 版本：atlas-2.0.0 ： https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz 模式：采用atlas自带的habse和solr作为存储和搜索引擎 其他依赖： jdk 1.8+kafka 2. 安装步骤 2.1 下载安装包、解压、设置PATH： 1 2 3 4 5 wget https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz tar xvf apache-atlas-2.0.0-sources.tar.gz -C /usr/lib/ vim /etc/profile # 添加atlas的路径到PATH PATH=$ATLAS_HOME/bin:$PATH 2.2 构建打包： 由于采用了内置</description>
     </item>
     
   </channel>

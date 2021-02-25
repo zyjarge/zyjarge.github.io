@@ -2,7 +2,7 @@
 title: "元数据管理工具 Apache Atlas 安装"
 date: 2020-10-25T11:19:59+08:00
 draft: false
-Category: ['大数据']
+Categories: ['大数据']
 ---
 
 ![atlas_logo](/img/2020/atlas_install/atlas_logo.svg)

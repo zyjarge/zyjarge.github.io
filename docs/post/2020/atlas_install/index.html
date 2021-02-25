@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>元数据管理工具 Apache Atlas 安装 | ZhangYong&#39;s Blog</title>
+    <meta property="og:title" content="元数据管理工具 Apache Atlas 安装 - ZhangYong&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-10-25T11:19:59&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-10-25T11:19:59&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="元数据管理工具 Apache Atlas 安装">
+        
+    <meta name="author" content="zhangyong.">
+    <meta property="og:url" content="http://zhangyong.me/post/2020/atlas_install/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-24VFZP809X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-24VFZP809X');
+    </script>
+
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://zhangyong.me/">
+                        ZhangYong&#39;s Blog
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="http://zhangyong.me/">首页</a>
+                    
+                    <a  href="http://zhangyong.me/reading/" title="读书">读书</a>
+                    
+                    <a  href="http://zhangyong.me/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://zhangyong.me/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">元数据管理工具 Apache Atlas 安装</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年10月25日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p><img src="/img/2020/atlas_install/atlas_logo.svg" alt="atlas_logo"></p>
+<h1 id="atlas-安装">Atlas 安装：</h1>
+<h2 id="1-atlas安装主要信息如下">1. atlas安装主要信息如下：</h2>
+<ul>
+<li>版本：atlas-2.1.0 ： <a href="https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz">https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz</a></li>
+<li>模式：采用atlas自带的habse和solr作为存储和搜索引擎</li>
+<li>其他依赖： jdk 1.8+kafka</li>
+</ul>
+<h2 id="2-安装步骤">2. 安装步骤</h2>
+<h3 id="21-下载安装包解压设置path">2.1 下载安装包、解压、设置PATH：</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz
+tar xvf apache-atlas-2.1.0-sources.tar.gz -C /usr/lib/
+vim /etc/profile
+<span style="color:#998;font-style:italic"># 添加atlas的路径到PATH</span>
+<span style="color:#008080">PATH</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$ATLAS_HOME</span>/bin:<span style="color:#008080">$PATH</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-构建打包">2.2 构建打包：</h3>
+<p>由于采用了内置的hbase和solr，因此采用如下命令进行打包：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn clean -DskipTests package -Pdist,embedded-hbase-solr
+</code></pre></td></tr></table>
+</div>
+</div><p>由于在构建过程中需要下载hbase和solr两个大家伙，使用命令行下载比较慢，这里有个小技巧，可以提前使用下载工具下载好，放入如下目录，然后再进行构建的时候，会判断安装包已经存在跳过下载直接解压安装。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hbase-2.0.2.tar.gz：放入 apache-atlas-sources-2.1.0/distro/hbase/
+solr-7.5.0.tgz: 放入 apache-atlas-sources-2.1.0/distro/solr/
+</code></pre></td></tr></table>
+</div>
+</div><p>在构建成功之后，会在distro目录下产生如下格式的安装包：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-bin.tar.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-hbase-hook.tar.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-hive-hook.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-kafka-hook.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-sources.tar.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-sqoop-hook.tar.gz
+distro/target/apache-atlas-<span style="color:#000;font-weight:bold">{</span>project.version<span style="color:#000;font-weight:bold">}</span>-storm-hook.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23-部署服务端">2.3 部署服务端</h3>
+<p>将<code>distro/target/apache-atlas-{project.version}-bin.tar.gz</code>解压到部署路径并建立简写的软连接，这里以/opt/atlas为例，即：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar xvf <span style="color:#d14">`</span>distro/target/apache-atlas-2.1.0-bin.tar.gz<span style="color:#d14">`</span>-C /opt
+ln -s apache-atlas-2.1.0-bin atlas
+</code></pre></td></tr></table>
+</div>
+</div><p>修改conf/atlas-application.properties中的部分参数：</p>
+<pre><code class="language-properties" data-lang="properties"># 指定数据存储引擎，这里使用hbase
+atlas.graph.storage.backend=hbase2 
+# 使用内置hbase，因此地址指向localhost
+atlas.graph.storage.hostname=localhost
+# 搜索+索引使用solr
+atlas.graph.index.search.backend=solr
+# 使用内置的zookeeper
+atlas.graph.index.search.solr.zookeeper-url=localhost:2181
+</code></pre><h3 id="24-启动atlas服务">2.4 启动atlas服务</h3>
+<p>使用内置的hbase和solr需要配置如下环境变量：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">export</span> <span style="color:#008080">MANAGE_LOCAL_HBASE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">true</span>
+<span style="color:#0086b3">export</span> <span style="color:#008080">MANAGE_LOCAL_SOLR</span><span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">true</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>启动服务：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bin/atlas_start.py
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="25-解决问题">2.5 解决问题</h3>
+<p>　　安装官网的文档介绍，到此应该就可以正常启动atlas了，但是我这里遇到了一些小插曲。</p>
+<h4 id="插曲1启动后无法访问管理页面">插曲1：启动后无法访问管理页面</h4>
+<p>　　症状就是日志提示atlas已经启动，但是管理页面无法打开，除此之外没有任何提示。采用最简单粗暴的方法，从入口的脚本一步一步的排查，主要做了如下几个事：</p>
+<ol>
+<li>
+<p>首先，了解脚本atlas_start.py的大概逻辑，其实大概逻辑很简单，就是根据配置信息设置系统变量、以及启动内置的hbase和solr服务等。</p>
+</li>
+<li>
+<p>打断点的方式一步一步排查，发现是内置的solr和hbase服务没有正常启动。</p>
+</li>
+<li>
+<p>在查看代码过程中，发现该脚本中引用另一个脚本里atlas_config.py有个DEBUG变量，改为<code>DEBUG = True</code>可以打印更多的日志信息。</p>
+</li>
+<li>
+<p>从debug的日志中，我们可以找到启动solr的具体命令，将下面的命令行直接粘贴在shell中执行，会出现如下提示：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/apache-atlas-2.1.0/solr/bin/solr start -z localhost:2181 -p <span style="color:#099">9838</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>WARNING: Starting Solr as the root user is a security risk and not considered best practice. Exiting.
+Please consult the Reference Guide. To override this check, start with argument &lsquo;-force&rsquo;</p>
+</blockquote>
+</li>
+<li>
+<p>到这里基本找到问题了，由于我是使用root账号启动，而使用root账号启动solr需要添加<code>-force</code>参数，而且整个atlas的启动脚本是使用python进行封装的，因此对于上面的信息是无法直接看到的。</p>
+</li>
+<li>
+<p>找到问题就好说了，在atlas_config.py中找到启动solr的<code>run_solr</code>方法，代码中把启动solr的命令存在一个cmd的数组中，我们只需要再最后追加一个<code>-force</code>参数即可。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cmd.append<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;-force&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>除了启动solr以外，在启动atlas过程中还会自动创建索引，也需要采用上面的方法来解决，具体方法就是在atlas_config.py中找到<code>create_solr_collection</code>方法，在cmd后面追加<code>-force</code> 参数。</p>
+</li>
+</ol>
+<h4 id="插曲2无法启动内置的hbase">插曲2：无法启动内置的Hbase</h4>
+<p>　　除了无法启动solr服务外，我也遇到了无法启动内置的Hbase的问题，症状就是启动之后找不到HMaster进程。好在有了上面的经验之后，解决起来就轻车熟路了，从Debug日志信息中找到启动HBase的命令，粘贴到命令行中手动执行。执行后发现是由于没有设置JAVA_HOME导致HBase无法启动， 设置了JAVA_HOME后就可以正常启动了。</p>
+<h2 id="3总结">3.总结：</h2>
+<p>　　经过上述2个问题，不难发现都是因为atlas的启动脚本是通过python封装的shell导致无法打印出依赖组件的错误信息所导致的，好在作者在代码中加入的DEBUG模式，打开之后可以查看更为详细的日志信息。</p>
+<p>　　最后，我们在使用一些开源框架工具的时候遇到问题的时候，在网上找不到解决方案的情况下，可以尝试从源码中下手，往往一般都能找到解决方案。</p>
+
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'c5f1d2fea2b9b4f626ae',
+    clientSecret: '2d6cb7c477c34f3ec17d872971e70bc48f9a4959',
+    repo: 'zyjarge.github.io',
+    owner: 'zyjarge',
+    admin: ['zyjarge'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="http://zhangyong.me/">ZhangYong&#39;s Blog By zhangyong.</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+    
+    </footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://zhangyong.me/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/visualization/" title="【十八般兵器】同学，数据可视化了解一下？">【十八般兵器】同学，数据可视化了解一下？</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/atlas_install/" title="元数据管理工具 Apache Atlas 安装">元数据管理工具 Apache Atlas 安装</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_3/" title="【十八般兵器】Typora进阶使用-画图篇（2）">【十八般兵器】Typora进阶使用-画图篇（2）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_2/" title="【十八般兵器】Typora进阶使用-画图篇（1）">【十八般兵器】Typora进阶使用-画图篇（1）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/reading_experience/" title="【读书笔记】《见识》">【读书笔记】《见识》</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora/" title="【十八般兵器】Typora">【十八般兵器】Typora</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/wheniamrunging/" title="【读书笔记】当我谈跑步时，我谈些什么">【读书笔记】当我谈跑步时，我谈些什么</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/effective_learning/" title="【读书笔记】如何高效学习">【读书笔记】如何高效学习</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/think_in_data_engine_2/" title="【三省吾身】互联网企业数据工程中的那些坑（二）">【三省吾身】互联网企业数据工程中的那些坑（二）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/think_in_data_engine_1/" title="【三省吾身】互联网企业数据工程中的那些坑（一）">【三省吾身】互联网企业数据工程中的那些坑（一）</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="http://zhangyong.me/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/">三省吾身 (2)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8/">十八般兵器 (3)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E7%AE%A1%E7%90%86/">管理 (1)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记 (5)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://zhangyong.me/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://zhangyong.me/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

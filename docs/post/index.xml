@@ -6,10 +6,28 @@
     <description>Recent content in Posts on ZhangYong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2020 19:03:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 Jan 2021 14:31:50 +0800</lastBuildDate>
     
 	<atom:link href="http://zhangyong.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【十八般兵器】同学，数据可视化了解一下？</title>
+      <link>http://zhangyong.me/post/2018/visualization/</link>
+      <pubDate>Thu, 28 Jan 2021 14:31:50 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2018/visualization/</guid>
+      <description>在与数据打交道的过程中，一定会涉及到数据可视化的相关工作，说白了就是把从数据中挖掘出的信息用图形的方式展现给用户，因此可视化可以说是数据整个生产过程中，离最终用户最近的一个环节，也是实现数据价值的最终的&amp;quot;临门一脚&amp;rdquo;，如果可视化做的不好，也会让前面各个数据处理</description>
+    </item>
+    
+    <item>
+      <title>元数据管理工具 Apache Atlas 安装</title>
+      <link>http://zhangyong.me/post/2020/atlas_install/</link>
+      <pubDate>Sun, 25 Oct 2020 11:19:59 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/atlas_install/</guid>
+      <description>Atlas 安装： 1. atlas安装主要信息如下： 版本：atlas-2.1.0 ： https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz 模式：采用atlas自带的habse和solr作为存储和搜索引擎 其他依赖： jdk 1.8+kafka 2. 安装步骤 2.1 下载安装包、解压、设置PATH： 1 2 3 4 5 wget https://www.apache.org/dyn/closer.cgi/atlas/2.1.0/apache-atlas-2.1.0-sources.tar.gz tar xvf apache-atlas-2.1.0-sources.tar.gz -C /usr/lib/ vim /etc/profile # 添加atlas的路径到PATH PATH=$ATLAS_HOME/bin:$PATH 2.2 构建打包： 由于采用了内置</description>
+    </item>
     
     <item>
       <title>【十八般兵器】Typora进阶使用-画图篇（2）</title>

@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>【大数据】元数据管理工具Apache Altas与Hive的整合</title>
+      <link>http://zhangyong.me/post/2020/atlas_integrate_hive/</link>
+      <pubDate>Sat, 25 Jan 2020 22:50:05 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2020/atlas_integrate_hive/</guid>
+      <description>1. 前情提要： 前面写了一篇文章讲了关于如何搭建Atlas服务端环境，但是想真正进行数据治理还需要搭建客户端环境，即需要在希望采集元数据的前端环境中，部署Atlas的客户端，将元数据上报到服务端，从而在服务端进行统一管理，本篇文章将介绍如何将Atlas与Hive进行整合，之所以选择H</description>
+    </item>
+    
+    <item>
       <title>【大数据】元数据管理工具 Apache Atlas 安装</title>
       <link>http://zhangyong.me/post/2020/atlas_install/</link>
       <pubDate>Wed, 15 Jan 2020 11:19:59 +0800</pubDate>

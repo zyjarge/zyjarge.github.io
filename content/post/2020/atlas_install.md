@@ -93,6 +93,10 @@ export MANAGE_LOCAL_SOLR=true
 bin/atlas_start.py
 ```
 
+使用浏览器访问：http://localhost:21000 ， 可以正常打开登录界面。
+
+![atlas_login](/img/2020/atlas_install/atlas_login.png)
+
 ### 2.5 解决问题
 
 　　安装官网的文档介绍，到此应该就可以正常启动atlas了，但是我这里遇到了一些小插曲。

@@ -210,7 +210,9 @@ atlas.graph.index.search.solr.zookeeper-url=localhost:2181
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bin/atlas_start.py
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="25-解决问题">2.5 解决问题</h3>
+</div><p>使用浏览器访问：http://localhost:21000 ， 可以正常打开登录界面。</p>
+<p><img src="/img/2020/atlas_install/atlas_login.png" alt="atlas_login"></p>
+<h3 id="25-解决问题">2.5 解决问题</h3>
 <p>　　安装官网的文档介绍，到此应该就可以正常启动atlas了，但是我这里遇到了一些小插曲。</p>
 <h4 id="插曲1启动后无法访问管理页面">插曲1：启动后无法访问管理页面</h4>
 <p>　　症状就是日志提示atlas已经启动，但是管理页面无法打开，除此之外没有任何提示。采用最简单粗暴的方法，从入口的脚本一步一步的排查，主要做了如下几个事：</p>

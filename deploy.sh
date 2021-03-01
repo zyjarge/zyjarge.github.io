@@ -7,7 +7,7 @@ printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
 
 # Build the project.
 # if using a theme, replace with `hugo -t <YOURTHEME>`
-hugo
+#hugo
 
 # Go To Public folder
 # cd docs

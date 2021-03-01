@@ -109,21 +109,17 @@
 <li>其他依赖： jdk 1.8+kafka</li>
 </ul>
 <h2 id="2-安装步骤">2. 安装步骤</h2>
-<h3 id="21-下载安装包解压设置path">2.1 下载安装包、解压、设置PATH：</h3>
+<h3 id="21-下载安装包解压">2.1 下载安装包、解压：</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz
 tar xvf apache-atlas-2.0.0-sources.tar.gz -C /usr/lib/
-vim /etc/profile
-<span style="color:#998;font-style:italic"># 添加atlas的路径到PATH</span>
-<span style="color:#008080">PATH</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$ATLAS_HOME</span>/bin:<span style="color:#008080">$PATH</span>
+<span style="color:#0086b3">cd</span> /usr/lib/apache-atlas-2.0.0-sources
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="22-构建打包">2.2 构建打包：</h3>

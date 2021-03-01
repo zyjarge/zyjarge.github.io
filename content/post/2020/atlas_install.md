@@ -17,14 +17,12 @@ categories: ['大数据','数据治理']
 
 ## 2. 安装步骤
 
-### 2.1 下载安装包、解压、设置PATH：
+### 2.1 下载安装包、解压：
 
 ```bash
 wget https://archive.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz
 tar xvf apache-atlas-2.0.0-sources.tar.gz -C /usr/lib/
-vim /etc/profile
-# 添加atlas的路径到PATH
-PATH=$ATLAS_HOME/bin:$PATH
+cd /usr/lib/apache-atlas-2.0.0-sources
 ```
 
 ### 2.2 构建打包：

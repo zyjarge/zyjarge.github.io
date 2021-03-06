@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>【十八般兵器】Docker 学习笔记整理 | ZhangYong&#39;s Blog</title>
+    <meta property="og:title" content="【十八般兵器】Docker 学习笔记整理 - ZhangYong&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-03-05T13:05:14&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-03-05T13:05:14&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="【十八般兵器】Docker 学习笔记整理">
+        
+    <meta name="author" content="zhangyong.">
+    <meta property="og:url" content="http://zhangyong.me/post/2019/docker_basic/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-24VFZP809X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-24VFZP809X');
+    </script>
+
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://zhangyong.me/">
+                        ZhangYong&#39;s Blog
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="http://zhangyong.me/">首页</a>
+                    
+                    <a  href="http://zhangyong.me/reading/" title="读书">读书</a>
+                    
+                    <a  href="http://zhangyong.me/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://zhangyong.me/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">【十八般兵器】Docker 学习笔记整理</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年3月5日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8'>十八般兵器</a></span>
+            
+        </div>
+        
+        
+        
+        <div class="post-content">
+            <p>　　话说自己从17年开始接触docker为代表的容器化相关的概念，也在工作过程中也用到了一些docker相关的技术，具体应用场景例如，例如在windows环境中想尝试安装某个linux下的应用来玩玩，可以很方便的下载镜像，几乎可以一个命令就搞定之前需要很多繁琐步骤才能完成的工作，或者可以在容器环境中快速搭建一个集成测试环境，每次测试完成后可以快速恢复到初始化状态，大大提升测试效率。在这过程中虽然也记录了一些笔记，但都比较零散混乱，今天写这篇文章就想把这些散乱的笔记整理一下，形成一篇系统的学习笔记。</p>
+<h1 id="1docker环境的安装">1.Docker环境的安装</h1>
+<p>　　我的测试环境为ubuntu操作系统，所以这里以ubuntu为例。访问官网的下载列表：<code>https://download.docker.com/linux/ubuntu/dists/${version}/pool/stable/amd64/</code>，其中<code>${version}</code>是根据自己的操作系统版本找到对应的版本代号。</p>
+<p>　　下载其中的如下三个安装包： docker-ce、docker-ce-cli、containerd.io，并使用如下命令进行安装：</p>
+<pre><code>sudo dpkg -i  docker-ce_ver_os.deb
+sudo dpkg -i  docker-ce-cli_ver_os.deb
+sudo dpkg -i  containerd.io_ver_os.deb
+</code></pre><p>​		安装成功之后，可以通过如下命令进行验证，是否安装成功。</p>
+<pre><code>sudo docker run hello-world
+</code></pre><p>​		如何出现“Hello from Docker!”则证明docker环境就安装成功，并且docker引擎也已经正常启动。</p>
+<h1 id="2docker镜像">2.Docker镜像</h1>
+<p>　　docker的所有容器都是基于镜像来创建的，这点有点类似与面向对象变成中类和对象之间的关系，镜像就是事先设计好的“类&rdquo;， 真正工作的是在运行时，容器就是通过”类“所创建的”对象“。</p>
+<p>​		一般我们常用的镜像在docker的官网上都已经存在了，我们只需要直接下载下来使用即可。</p>
+<h2 id="21-列出当前已有的镜像">2.1 列出当前已有的镜像：</h2>
+<pre><code>docker images
+
+REPOSITORY         TAG          IMAGE ID       CREATED         SIZE
+compose_test_web   latest       1e49cd6698a8   2 hours ago     196MB
+hadoop_stack       0.3          05ac13d265cf   4 days ago      6.31GB
+ubuntu             latest       f63181f19b2f   6 weeks ago     72.9MB
+mysql              5.7          a70d36bc331a   6 weeks ago     449MB
+redis              alpine       933c79ea2511   7 weeks ago     31.6MB
+python             3.7-alpine   72e4ef8abf8e   2 months ago    41.1MB
+hello-world        latest       bf756fb1ae65   14 months ago   13.3kB
+</code></pre><p>可以看到列出了已有的镜像，并可以查看到如下信息：</p>
+<ul>
+<li>REPOSITORY： 镜像来自于哪个仓库</li>
+<li>TAG：镜像的标签，一般标识版本号，latest 标识最新的版本</li>
+<li>IMAGE ID：镜像的ID</li>
+<li>CREATED：镜像创建时间</li>
+<li>SIZE：镜像大小</li>
+</ul>
+<h2 id="22-下载镜像">2.2 下载镜像：</h2>
+<p>使用下面的命令可以下载指定版本的镜像：</p>
+<pre><code>docker pull image_name:tag
+</code></pre><p>如果下载最新的镜像可以直接使用：</p>
+<pre><code>docker pull image_name
+</code></pre><h2 id="23-更新国内镜像地址">2.3 更新国内镜像地址</h2>
+<p>在下载镜像的时候，如果速度比较慢的话，建议修改一下配置，改用国内的镜像，可以大幅提升镜像的下载速度，这里是知名的几个国内镜像：</p>
+<ul>
+<li>科大镜像：<strong><a href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></strong></li>
+<li>网易：<strong><a href="https://hub-mirror.c.163.com/">https://hub-mirror.c.163.com/</a></strong></li>
+<li>七牛云加速器：<strong><a href="https://reg-mirror.qiniu.com">https://reg-mirror.qiniu.com</a></strong></li>
+<li>阿里云：<strong><a href="https://xxx.mirror.aliyuncs.com">https://xxx.mirror.aliyuncs.com</a></strong>  (需要<a href="https://cr.console.aliyun.com/">注册</a>阿里云账号，xxx为阿里云系统分配的id)</li>
+</ul>
+<p>修改daemon配置文件/etc/docker/daemon.json来使用加速器</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <span style="color:#d14">&lt;&lt;-&#39;EOF&#39;
+</span><span style="color:#d14">{
+</span><span style="color:#d14">  &#34;registry-mirrors&#34;: [&#34;https://xxxx.mirror.aliyuncs.com&#34;]
+</span><span style="color:#d14">}
+</span><span style="color:#d14">EOF</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="24-搜索镜像">2.4 搜索镜像</h2>
+<p>可以使用下面的命令来搜索镜像名称，以mysql为例：</p>
+<pre><code>docker search mysql
+</code></pre><pre><code>NAME                              DESCRIPTION                                     STARS     OFFICIAL AUTOMATED
+mysql                             MySQL is a widely used, open-source relation…   10575     [OK]
+mariadb                           MariaDB Server is a high performing open sou…   3956      [OK]
+mysql/mysql-server                Optimized MySQL Server Docker images. Create…   775                  [OK]
+percona                           Percona Server is a fork of the MySQL relati…   527       [OK]
+centos/mysql-57-centos7           MySQL 5.7 SQL database server                   87
+mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   79
+centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]
+bitnami/mysql                     Bitnami MySQL Docker Image                      48                   [OK]
+deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]
+databack/mysql-backup             Back up mysql databases to... anywhere!         39
+prom/mysqld-exporter                                                              37                   [OK]
+tutum/mysql                       Base docker image to run a MySQL database se…   35
+schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]
+linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   27
+centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20
+circleci/mysql                    MySQL is a widely used, open-source relation…   20
+mysql/mysql-router                MySQL Router provides transparent routing be…   18
+arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]
+fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   12                   [OK]
+yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]
+openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6
+devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3
+ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]
+widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]
+jelastic/mysql                    An image of the MySQL database server mainta…   1
+</code></pre><h2 id="25-删除镜像">2.5 删除镜像</h2>
+<p>使用如下命令删除镜像，其中-f 参数标识强制删除。</p>
+<pre><code>docker rmi [-f] image_name 
+</code></pre><h1 id="3docker容器">3.Docker容器</h1>
+<h2 id="31-启动容器">3.1 启动容器</h2>
+<p>启动容器有几种模式，下面以实例进行说明：</p>
+<ol>
+<li>
+<p>例如： 以交互模式并在新的终端中启动容器后，启动bash环境，并给容器命名为my_container</p>
+<pre><code>docker run -i -t --name my_container ubuntu /bin/bash
+</code></pre></li>
+<li>
+<p>以后台形式运行：</p>
+<pre><code>docker run -i -t -d --name my_container ubuntu /bin/bash
+</code></pre></li>
+<li>
+<p>启动容器后，并将容器的3306端口映射到本机的3306端口</p>
+<pre><code>docker run -d --name mysql -p 3366:3306  mysql
+</code></pre><p>-p： 将容器的3306端口映射到主机上的3366端口</p>
+</li>
+<li>
+<p>启动容器将主机的</p>
+</li>
+</ol>
+<h2 id="32-停止容器">3.2 停止容器</h2>
+<pre><code>docker stop container_id/name
+</code></pre><h2 id="33-重启容器">3.3 重启容器</h2>
+<pre><code>docker start container_id/name
+</code></pre><h2 id="34-删除容器">3.4 删除容器</h2>
+<pre><code>docker rm -f container_id/name
+</code></pre><h2 id="35-查看容器">3.5 查看容器</h2>
+<ul>
+<li>
+<p>显示正在运行的容器：</p>
+<pre><code>docker ps 
+</code></pre></li>
+<li>
+<p>显示所有容器：</p>
+<pre><code>docker ps -a
+</code></pre></li>
+<li>
+<p>显示结果：</p>
+<pre><code>root@ali-zjk:~# docker ps -a
+CONTAINER ID   IMAGE              COMMAND                  CREATED             STATUS                           PORTS     NAMES
+e837dbc40ac7   ubuntu             &quot;/bin/bash&quot;              5 seconds ago       Exited (0) 4 seconds ago                   c1
+ecb19464015d   ubuntu             &quot;bash&quot;                   About an hour ago   Exited (130) About an hour ago             zen_sammet
+60a09906be82   ubuntu             &quot;bash&quot;                   About an hour ago   Exited (0) About an hour ago               romantic_cori
+6107a5142640   ubuntu             &quot;bash&quot;                   About an hour ago   Exited (130) About an hour ago             strange_panini
+</code></pre></li>
+</ul>
+<h1 id="4docker网络相关">4.Docker网络相关</h1>
+<p>Docker 容器启动之后，如果想在不同容器间进行数据交换，就必须使容器间能够互相访问。具体操作方法如下：</p>
+<ol>
+<li>
+<p>首先，我们需要创建一个虚拟网络：</p>
+<pre><code>docker network create test_net
+</code></pre></li>
+<li>
+<p>在创建容器的时候，指定该容器所连接的虚拟网络：</p>
+<pre><code># 创建一个名为ubuntu_1的容器，并连接至test_net的虚拟网络
+docker run -itd --name ubuntu_1 --network test_net ubuntu bash
+   
+# 创建一个名为ubuntu_2的容器，并连接至test_net的虚拟网络
+docker run -itd --name ubuntu_2 --network test_net ubuntu bash
+</code></pre></li>
+<li>
+<p>现在我们已经创建了两个容器，并且连接到同一个虚拟网络test_net内，登录其中任意容器之后，可以通过ping命令ping通另外一个容器。</p>
+<pre><code>docker exec -it ubuntu_1 bash
+   
+root@d158627cb7ff:/# ping ubuntu_2
+PING ubuntu_2 (172.21.0.3): 56 data bytes
+64 bytes from 172.21.0.3: icmp_seq=0 ttl=64 time=0.144 ms
+64 bytes from 172.21.0.3: icmp_seq=1 ttl=64 time=0.087 ms
+</code></pre></li>
+<li>
+<p>除了在创建的时候指定网络之外，也可以在容器创建之后，手工将容器连接到某个虚拟网络内。下面的命令创建了一个ubuntu_3的容器，然后手工将其连接之test_net，可以与之前两个容器互相通信。</p>
+<pre><code>docker run -itd --name ubuntu_3 ubuntu bash
+docker network connect test_net ubuntu_3
+</code></pre></li>
+</ol>
+<p>​</p>
+
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'c5f1d2fea2b9b4f626ae',
+    clientSecret: '2d6cb7c477c34f3ec17d872971e70bc48f9a4959',
+    repo: 'zyjarge.github.io',
+    owner: 'zyjarge',
+    admin: ['zyjarge'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="http://zhangyong.me/">ZhangYong&#39;s Blog By zhangyong.</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+    
+    </footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://zhangyong.me/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_3/" title="【十八般兵器】Typora进阶使用-画图篇（2）">【十八般兵器】Typora进阶使用-画图篇（2）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora_2/" title="【十八般兵器】Typora进阶使用-画图篇（1）">【十八般兵器】Typora进阶使用-画图篇（1）</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/reading_experience/" title="【读书笔记】《见识》">【读书笔记】《见识》</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/intro_typora/" title="【十八般兵器】Typora">【十八般兵器】Typora</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/atlas_integrate_hive/" title="【大数据】元数据管理工具Apache Altas与Hive的整合">【大数据】元数据管理工具Apache Altas与Hive的整合</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2020/atlas_install/" title="【大数据】元数据管理工具 Apache Atlas 安装">【大数据】元数据管理工具 Apache Atlas 安装</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/wheniamrunging/" title="【读书笔记】当我谈跑步时，我谈些什么">【读书笔记】当我谈跑步时，我谈些什么</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/effective_learning/" title="【读书笔记】如何高效学习">【读书笔记】如何高效学习</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2019/docker_basic/" title="【十八般兵器】Docker 学习笔记整理">【十八般兵器】Docker 学习笔记整理</a>
+    </li>
+    
+    <li>
+        <a href="http://zhangyong.me/post/2018/think_in_data_engine_2/" title="【三省吾身】互联网企业数据工程中的那些坑（二）">【三省吾身】互联网企业数据工程中的那些坑（二）</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="http://zhangyong.me/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/">三省吾身 (2)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E5%8D%81%E5%85%AB%E8%88%AC%E5%85%B5%E5%99%A8/">十八般兵器 (4)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据 (2)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86/">数据治理 (2)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E7%AE%A1%E7%90%86/">管理 (1)</a></li>
+    
+    <li><a href="http://zhangyong.me/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记 (4)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://zhangyong.me/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://zhangyong.me/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

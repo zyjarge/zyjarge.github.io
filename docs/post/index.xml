@@ -84,6 +84,15 @@
     </item>
     
     <item>
+      <title>【十八般兵器】Docker 学习笔记整理</title>
+      <link>http://zhangyong.me/post/2019/docker_basic/</link>
+      <pubDate>Tue, 05 Mar 2019 13:05:14 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2019/docker_basic/</guid>
+      <description>话说自己从17年开始接触docker为代表的容器化相关的概念，也在工作过程中也用到了一些docker相关的技术，具体应用场景例如，例如在windows环境中想尝试安装某个linux下的应用来玩玩，可以很方便的下载镜像，几乎可以一个命令就搞定之前需要很多繁琐步骤才能完成的工作，或者</description>
+    </item>
+    
+    <item>
       <title>【三省吾身】互联网企业数据工程中的那些坑（二）</title>
       <link>http://zhangyong.me/post/2018/think_in_data_engine_2/</link>
       <pubDate>Fri, 11 May 2018 15:14:25 +0800</pubDate>

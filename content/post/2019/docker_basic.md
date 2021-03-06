@@ -5,7 +5,7 @@ draft: true
 categories: ['十八般兵器']
 ---
 
-　　话说自己从17年开始接触docker为代表的容器化相关的概念，也在工作过程中也用到了一些docker相关的技术，这其中也零散的记录了一些笔记，但都比较凌乱，今天写这篇文章就想把这些散乱的笔记整理一下，形成一篇系统的学习笔记。
+　　话说自己从17年开始接触docker为代表的容器化相关的概念，也在工作过程中也用到了一些docker相关的技术，具体应用场景例如，例如在windows环境中想尝试安装某个linux下的应用来玩玩，可以很方便的下载镜像，几乎可以一个命令就搞定之前需要很多繁琐步骤才能完成的工作，或者可以在容器环境中快速搭建一个集成测试环境，每次测试完成后可以快速恢复到初始化状态，大大提升测试效率。在这过程中虽然也记录了一些笔记，但都比较零散混乱，今天写这篇文章就想把这些散乱的笔记整理一下，形成一篇系统的学习笔记。
 
 # 1.Docker环境的安装
 
@@ -143,7 +143,7 @@ docker rmi [-f] image_name
 
 ## 3.1 启动容器
 
-启动容器有几种模式：
+启动容器有几种模式，下面以实例进行说明：
 
 1. 例如： 以交互模式并在新的终端中启动容器后，启动bash环境，并给容器命名为my_container
 
@@ -156,6 +156,16 @@ docker rmi [-f] image_name
    ```
    docker run -i -t -d --name my_container ubuntu /bin/bash
    ```
+
+3. 启动容器后，并将容器的3306端口映射到本机的3306端口
+
+   ```
+   docker run -d --name mysql -p 3366:3306  mysql
+   ```
+
+   -p： 将容器的3306端口映射到主机上的3366端口
+
+4. 启动容器将主机的
 
 ## 3.2 停止容器
 
@@ -204,4 +214,42 @@ docker rm -f container_id/name
 
 # 4.Docker网络相关
 
-# 5.其他知识点
+Docker 容器启动之后，如果想在不同容器间进行数据交换，就必须使容器间能够互相访问。具体操作方法如下：
+
+1. 首先，我们需要创建一个虚拟网络：
+
+   ```
+   docker network create test_net
+   ```
+
+2. 在创建容器的时候，指定该容器所连接的虚拟网络：
+
+   ```
+   # 创建一个名为ubuntu_1的容器，并连接至test_net的虚拟网络
+   docker run -itd --name ubuntu_1 --network test_net ubuntu bash
+   
+   # 创建一个名为ubuntu_2的容器，并连接至test_net的虚拟网络
+   docker run -itd --name ubuntu_2 --network test_net ubuntu bash
+   ```
+
+3. 现在我们已经创建了两个容器，并且连接到同一个虚拟网络test_net内，登录其中任意容器之后，可以通过ping命令ping通另外一个容器。
+
+   ```
+   docker exec -it ubuntu_1 bash
+   
+   root@d158627cb7ff:/# ping ubuntu_2
+   PING ubuntu_2 (172.21.0.3): 56 data bytes
+   64 bytes from 172.21.0.3: icmp_seq=0 ttl=64 time=0.144 ms
+   64 bytes from 172.21.0.3: icmp_seq=1 ttl=64 time=0.087 ms
+   ```
+
+4. 除了在创建的时候指定网络之外，也可以在容器创建之后，手工将容器连接到某个虚拟网络内。下面的命令创建了一个ubuntu_3的容器，然后手工将其连接之test_net，可以与之前两个容器互相通信。
+
+   ```
+   docker run -itd --name ubuntu_3 ubuntu bash
+   docker network connect test_net ubuntu_3
+   ```
+
+   
+
+​	

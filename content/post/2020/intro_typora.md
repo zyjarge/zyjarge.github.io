@@ -1,6 +1,6 @@
 ---
 
-title: "【十八般兵器】Typora"
+title: "【十八般兵器】Typora使用介绍"
 date: 2020-02-19T16:15:20+08:00
 categories: ['十八般兵器']
 draft: false

@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>【大数据】YARN架构原理剖析-1</title>
+      <link>http://zhangyong.me/post/2018/YARN-infrastructure/</link>
+      <pubDate>Sat, 09 Jun 2018 15:38:58 +0800</pubDate>
+      
+      <guid>http://zhangyong.me/post/2018/YARN-infrastructure/</guid>
+      <description>YARN架构的产生背景 早在hadoop1.x的年代，管理集群资源是通过JobTracker和TaskTracker这两个角色来配合完成的， 其中Job的启动和资源分配全部由JobTracker来负责完成，而TaskTracker则用来负责JOb任务在节点本地的任务运行。简单的流程图</description>
+    </item>
+    
+    <item>
       <title>【三省吾身】互联网企业数据工程中的那些坑（二）</title>
       <link>http://zhangyong.me/post/2018/think_in_data_engine_2/</link>
       <pubDate>Fri, 11 May 2018 15:14:25 +0800</pubDate>

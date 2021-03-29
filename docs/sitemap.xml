@@ -103,6 +103,16 @@
   </url>
   
   <url>
+    <loc>http://zhangyong.me/categories/Hadoop/</loc>
+    <lastmod>2018-06-09T15:38:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangyong.me/post/2018/YARN-infrastructure/</loc>
+    <lastmod>2018-06-09T15:38:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://zhangyong.me/post/2018/think_in_data_engine_2/</loc>
     <lastmod>2018-05-11T15:14:25+08:00</lastmod>
   </url>
